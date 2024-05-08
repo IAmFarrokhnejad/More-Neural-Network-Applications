@@ -2,11 +2,10 @@
 
 
 
-S1: Iris 
+##S1: Iris (SLP/MLP)
 
 Introduction:
 In this project, we explore the use of Single-layer Perceptrons (SLP) and Multi-layer Perceptrons (MLP) for the classification of Iris flowers into three species: Setosa, Versicolor, and Virginica. We design and evaluate different neural network architectures on the Iris flowers dataset to understand their performance and limitations.
-
 
 
 Network Design:
@@ -70,3 +69,27 @@ We compared the accuracy of the 4x3 SLP network and the 4x10x3 MLP network on th
 
 Conclusion:
 In conclusion, this report demonstrated the limitations of Single-layer Perceptrons for the Iris species classification problem and the effectiveness of Multi-layer Perceptrons, especially when dealing with non-linear relationships in the data. Also, MLP networks can be improved slightly by adjusting the hyperparameters properly, such as learning rate factor and number of hidden layers.
+
+
+
+
+
+
+
+
+
+
+
+##S2: Digits(Pattern Association/Associative Neural Network)
+
+Introduction:
+In this project, we explore the use of Associative Neural Networks using the Hebb learning rule to determine the association of numbers (from 0 to 9) with their patterns. We design and evaluate the neural network in various ways and consider different aspects such as correlation between pattern representation and network’s storage capacity, correlation between network performance and type of presentation, etc. to understand the performance and thresholds of the architecture.
+
+
+Capacity Threshold:
+To test the network’s capacity, we stored all possible combinations of digits, from 2-digit to 7-digit sets. The results of which are as follows:
+- 2-digit sets: 45 out of 45 sets had no errors in recall,
+- 3-digit sets: 89 out of 120 (~74%) sets had no errors in recall (e.g., {1,3,5}, {1,5,7}),
+- 4-digit sets: 74 out of 210 (~35%) sets had no errors in recall (e.g., {1,2,4,8}, {1,4,7,8}),
+- 5-digit sets: 14 out of 252 (~5%) sets had no errors in recall (e.g., {0,1,4,6,7}, {1,4,7,8,9}),
+- 6 and 7-digit sets: All sets had at least 1 incorrectly recalled pattern;
