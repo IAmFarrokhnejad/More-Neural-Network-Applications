@@ -80,6 +80,7 @@ In conclusion, this report demonstrated the limitations of Single-layer Perceptr
 
 
 
+
 ##S2: Digits(Pattern Association/Associative Neural Network)
 
 Introduction:
