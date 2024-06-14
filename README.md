@@ -93,3 +93,55 @@ To test the network’s capacity, we stored all possible combinations of digits,
 - 4-digit sets: 74 out of 210 (~35%) sets had no errors in recall (e.g., {1,2,4,8}, {1,4,7,8}),
 - 5-digit sets: 14 out of 252 (~5%) sets had no errors in recall (e.g., {0,1,4,6,7}, {1,4,7,8,9}),
 - 6 and 7-digit sets: All sets had at least 1 incorrectly recalled pattern;
+
+Evidently, there is no definitive number to the capacity of the network; ultimately, the network capacity depends on the chosen associations. However, we can deduce that the network cannot store more than 6 digits at a time without added modifications. 
+
+
+Effect of Pattern Similarity on Network Capacity:
+Pattern similarity is defined as the number of identical bits between a pair of patterns; for example, the patterns for the digits 6 and 9 are ~77% similar (27 out of 35 bits used to represent them are the same).
+Based on our results, pattern similarity does affect the effective capacity of the network; if the stored patterns are similar to each other, the network may have trouble recalling these patterns.
+Below is a list of pattern sets which had 0% recall accuracy (none of the input patterns were associated with their actual pattern), all of which are ~75-85% similar:
+- 3-digit sets: {0,3,8}, {2,3,9} 
+- 4-digit sets: {0,3,6,9}, {2,3,5,9}
+- 5-digit sets: {0,2,3,5,9}, {0,3,5,8,9}
+By comparing these sets with the sets that had perfect recall accuracy (e.g., {0,1,4,6,7} w/ ~50% similarity), we can observe that the more similar the patterns are in the stored associations, the lower the accuracy of the network will be.
+
+
+
+Bipolar vs. Binary Pattern Representation:
+After testing the network with binary representations of the patterns, we found that bipolar representation results in much better accuracy; the network could only support up to 3 digits without error with binary patterns, while it could support up to 5 using bipolar representation.
+
+
+Maximum Noise Tolerance:
+We tested the noise tolerance of the system by altering the input patterns from 0% to 100% with 5% increments. We found the following:
+- The network was able to maintain its average accuracy levels up to 15% noise.
+- Above 15% resulted in drastic performance degradation, and above 50% noise resulted in complete failure of the system to recognize patterns.
+These numbers were obtained by measuring the average correct recalls of the network, and were consistent across different numbers of stored associations (2-digit to 6-digit sets).
+
+
+
+Testing Noise Tolerance for Given Sets:
+We tested the network’s ability the recall each of the given sets when 10% noise was applied. Each set was tested 1000 different times, and the number of completely correct recalls were as follows:
+- Set {1,2,3,4}: ~83% (~830 out of 1000);
+- Set {1,2,3}: ~94% (~940 out of 1000);
+- Set {0,1,2,4}: ~100% (~1000 out of 1000);
+- Set {0,1,2,5}: ~95% (~950 out of 1000).
+
+
+
+Effect of Association Set Composition on Noise Tolerance:
+The number of stored associations in the network is inversely related with the noise tolerance, specifically the noise threshold after which the accuracy starts to sharply decrease. Previously, we had measured this threshold to be 15%; however, the actual threshold varies between 15%-30%, depending on the number of stored patterns. For example, when 4 patterns are stored, this threshold seems to be around 15-20%, and when 2 patterns are stored, it stabilizes at around 30%. (Figures 4-6 illustrate the change in accuracy over corruption for different number of store associations).
+On the other hand, pattern similarity did not have a notable effect on noise tolerance.
+
+
+
+Iterative Presentation (Feedback Architecture):
+We tested the effect of iterative presentation in 2 different ways:
+- Using a discrete Hopfield architecture
+- Using a modified Hopfield architecture w/ self-connections
+We found that in both cases, iterative presentation only slightly improves the accuracy of the network over higher noise levels.
+
+
+
+Conclusion:
+In conclusion, our collaborative exploration of Associative Neural Networks using the Hebbian rule revealed significant insights. The network exhibited successful recall of sets up to 6 digits, with capacity influenced by pattern similarity. Bipolar pattern representation notably improved accuracy over binary. Noise tolerance tests showed resilience up to 15%, with a decline beyond 50%. The number of stored associations inversely affected noise tolerance, while the similarity of patterns had no major effect on noise tolerance. Iterative presentation, in both discrete and modified Hopfield architectures, marginally improved accuracy at higher noise levels. However, its impact was limited, suggesting inherent robustness in the basic architecture. 
